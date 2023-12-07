@@ -20,4 +20,4 @@ Route::group(['controller' => FrontendController::class], function () {
     Route::get('/{slug}', 'show');
 });
 
-Route::post('/shortify', ShortifyController::class);
+Route::post('/shortify', ShortifyController::class)->name('handle');

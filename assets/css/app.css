@@ -62,3 +62,8 @@ html, body {
     transition: .1s;
     opacity: .8;
 }
+
+.alert-success a {
+    font-weight: 700;
+    color: #fff;
+}

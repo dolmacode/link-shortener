@@ -4,14 +4,15 @@
     <main class="home">
         <h1 class="page-heading">Сокращение ссылок онлайн</h1>
         
-        <form class="form" method="post">
+        <form class="form" action="{{ route('handle') }}" method="post">
+            @csrf
             @if(session()->has('success'))
             <div class="alert-success">
-                {{ session()->get('success') }}
+                {!! session()->get('success') !!}
             </div>
             @endif
 
-            @if(session()->has('success'))
+            @if(session()->has('error'))
             <div class="alert-danger">
                 {{ session()->get('error') }}
             </div>
