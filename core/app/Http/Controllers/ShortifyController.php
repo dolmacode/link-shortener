@@ -6,10 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Actions\ShortifyAction;
 use Illuminate\Support\Facades\Session;
+use App\Models\Link;
 
 class ShortifyController extends Controller
 {
-    public function __invoke(Request $request) {
+    public function store(Request $request) {
         $url = $request->url;
         
         $action = new ShortifyAction();
@@ -20,7 +21,26 @@ class ShortifyController extends Controller
             return back();
         }
 
-        Session::flash('success', 'Произошла ошибка сокращения ссылки, попробуйте снова');
+        Session::flash('error', 'Произошла ошибка сокращения ссылки, попробуйте снова');
+        return back();
+    }
+
+    public function destroy($id) {
+        $link = Link::find($id);
+
+        if (!$link) {
+            Session::flash('error', 'Ссылка не найдена!');
+            return back();
+        }
+
+        if ($link->ip != $_SERVER['REMOTE_ADDR']) {
+            Session::flash('error', 'Ссылка не принадлежит вам!');
+            return back();
+        }
+
+        $link->delete();
+
+        Session::flash('success', 'Ссылка успешно удалена!');
         return back();
     }
 }

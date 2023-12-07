@@ -15,4 +15,6 @@ use App\Http\Controllers\Api\ShortifyController;
 |
 */
 
-Route::post('/shortify', ShortifyController::class);
+Route::post('/shortify', [ShortifyController::class, 'store']);
+Route::get('/history', [ShortifyController::class, 'history']);
+Route::delete('/delete/{id}', [ShortifyController::class, 'destroy']);

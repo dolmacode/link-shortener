@@ -13,5 +13,6 @@ class Link extends Model
         'url',
         'slug',
         'visits',
+        'ip',
     ];
 }

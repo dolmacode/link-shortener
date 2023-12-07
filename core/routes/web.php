@@ -17,7 +17,9 @@ use App\Http\Controllers\ShortifyController;
 
 Route::group(['controller' => FrontendController::class], function () {
     Route::get('/', 'index');
+    Route::get('/history', 'history')->name('history');
     Route::get('/{slug}', 'show');
 });
 
-Route::post('/shortify', ShortifyController::class)->name('handle');
+Route::post('/shortify', [ShortifyController::class, 'store'])->name('handle');
+Route::get('/delete/{id}', [ShortifyController::class, 'destroy'])->name('delete');

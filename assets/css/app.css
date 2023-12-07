@@ -67,3 +67,8 @@ html, body {
     font-weight: 700;
     color: #fff;
 }
+
+.history__item {
+    display: flex;
+    gap: .8rem;
+}

@@ -13,6 +13,7 @@ class ShortifyAction {
             $link = Link::create([
                 'url' => $url,
                 'slug' => $slug,
+                'ip' => $_SERVER['REMOTE_ADDR'],
             ]);
 
             $link->save();

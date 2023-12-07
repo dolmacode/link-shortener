@@ -12,6 +12,14 @@ class FrontendController extends Controller
         return view('pages.index');
     }
     
+    public function history() {
+        $data = [
+            'links' => Link::where('ip', $_SERVER['REMOTE_ADDR'])->get(),
+        ];
+
+        return view('pages.history', $data);
+    }
+
     public function show($slug) {
         $link = Link::where('slug', $slug)->firstOrFail();
         

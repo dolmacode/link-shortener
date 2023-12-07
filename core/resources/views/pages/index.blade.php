@@ -21,6 +21,7 @@
             <label for="link_input">Ссылка</label>
             <input type="url" name="url" id="link_input" class="form__input" placeholder="http://example.com" required>
             <button class="form__submit">Сократить</button>
+            <a href="{{ route('history') }}">Мои ссылки</a>
         </form>
     </main>
 @endsection
